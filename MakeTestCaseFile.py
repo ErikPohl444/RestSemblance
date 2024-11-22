@@ -26,8 +26,8 @@ endpointdatasource = {'TestCase1': {
                 'status_code': '200'
             }
     },
-    'args': [1,2],
-    'kwargs': {'c':3},
+    'args': [1, 2],
+    'kwargs': {'c': 3},
     'Expected_Output': True
     },
     'TestCase2': {
@@ -41,8 +41,8 @@ endpointdatasource = {'TestCase1': {
                     'status_code': '200'
                 }
             },
-    'args': [1,2],
-    'kwargs': {'c':3},
+    'args': [1, 2],
+    'kwargs': {'c': 3},
     'Expected_Output': True
 
         }

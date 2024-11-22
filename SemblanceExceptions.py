@@ -17,6 +17,7 @@ __status__ = "Beta"
 class Error(Exception):
     """Base class for other exceptions"""
 
+
 class UnrecognizedURLTestCase(Error):
     """Raised when a mocked API call function uses an unknown endpoint"""
     def __init__(self, msg=None):

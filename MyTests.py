@@ -3,9 +3,9 @@
 from unittest import mock
 import logging
 import sys
-from sample_client_in_need_of_mocking import GetStudentAndCourse
+from sample_client_in_need_of_mocking import get_student_and_course
 from Semblance import Semblance, semblance_mocked_requests_get
-from Semblance import startCaptureOutput, stopCapturedOutput
+from Semblance import start_capture_output, stop_captured_output
 
 __author__ = "Erik Pohl"
 __copyright__ = "None"
@@ -15,6 +15,7 @@ __version__ = "1.0.0"
 __maintainer__ = "Erik Pohl"
 __email__ = "erik.pohl.444@gmail.com"
 __status__ = "Beta"
+
 
 class MyTestCases(Semblance):
     '''
@@ -30,7 +31,7 @@ class MyTestCases(Semblance):
         :param kwargs: not needed
         :return: True
         '''
-        self.all_mock_all_rest_api_cases(GetStudentAndCourse)
+        self.all_mock_all_rest_api_cases(get_student_and_course)
         return True
 
     def test_capture_stdout(self, *args, **kwargs):
@@ -40,9 +41,9 @@ class MyTestCases(Semblance):
         :param kwargs: not needed
         :return: captured output
         '''
-        startCaptureOutput()
+        start_capture_output()
         print("hello")
-        capout = stopCapturedOutput()
+        capout = stop_captured_output()
         print("captured -->", capout)
         self.assertEqual("hello\n", capout)
 

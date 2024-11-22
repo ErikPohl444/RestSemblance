@@ -31,6 +31,7 @@ __status__ = "Beta"
 # TODO: remove looping through all test cases from test script and put it here
 # TODO: we must put the expected results for each case in the dictionary this way
 
+
 def semblance_mocked_requests_get(*args, **kwargs):
     '''
     Get the response data for the mocked endpoint
@@ -49,10 +50,10 @@ def semblance_mocked_requests_get(*args, **kwargs):
             )
             raise UnrecognizedURLTestCase
         endpoint_return = endpoint[kwargs['url']]
-        MockedResponse = SimpleNamespace()
+        mocked_response = SimpleNamespace()
         for key, value in endpoint_return.items():
-            setattr(MockedResponse, key, value)
-        return MockedResponse
+            setattr(mocked_response, key, value)
+        return mocked_response
     else:
         print("no args")
     return True
@@ -69,7 +70,8 @@ def inccurrentcase():
         yield test_case
     raise StopIteration
 
-def startCaptureOutput():
+
+def start_capture_output():
     '''
     deprecated: use the redirect context manager instead
     :return:
@@ -83,7 +85,7 @@ def startCaptureOutput():
     return True
 
 
-def stopCapturedOutput():
+def stop_captured_output():
     '''
     deprecated: use the redirect context manager instead
     :return:
@@ -97,7 +99,7 @@ def stopCapturedOutput():
     return TestCase.capturedOutput.getvalue()
 
 
-def LoadCases():
+def load_cases():
     '''
     Loads test cases from a pickled dictionary
     Set current test case to first test case
@@ -117,7 +119,7 @@ def LoadCases():
 
 
 class Semblance(TestCase):
-    LoadCases()
+    load_cases()
 
     def all_mock_all_rest_api_cases(self, foo):
         for l in inccurrentcase():
@@ -127,4 +129,3 @@ class Semblance(TestCase):
             actual_result = foo(*xargs, **xkwargs)
             self.assertEqual(actual_result, endpointdata['Expected_Output'])
         return True
-

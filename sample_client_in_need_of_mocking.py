@@ -33,7 +33,7 @@ def perform_request(api_url):
     return True
 
 
-def GetStudentAndCourse():
+def get_student_and_course():
     '''
     API requests to get Student and Course data
     :return: True
@@ -42,5 +42,6 @@ def GetStudentAndCourse():
     perform_request(url_courses)
     return True
 
+
 if __name__ == '__main__':
-    GetStudentAndCourse()
+    get_student_and_course()
