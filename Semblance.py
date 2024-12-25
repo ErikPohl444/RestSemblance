@@ -33,18 +33,18 @@ __status__ = "Beta"
 
 
 def semblance_mocked_requests_get(*args, **kwargs):
-    '''
+    """
     Get the response data for the mocked endpoint
     :param args: positional arguments to the mock side-effect
     :param kwargs: keyword arguments to the mock side-effect
     :return: response or error
-    '''
+    """
     currentcase = TestCase.currentcase
     endpointdata = TestCase.endpointdatasource
     if kwargs:
         try:
             endpoint = endpointdata[currentcase]['urls']
-        except:
+        except KeyError:
             logging.critical(
                 "Did not recognize the URL to be mocked: " + kwargs['url']
             )
@@ -60,11 +60,11 @@ def semblance_mocked_requests_get(*args, **kwargs):
 
 
 def inccurrentcase():
-    '''
+    """
     Increment test cases using
     a standard nomenclature
     :return: True
-    '''
+    """
     for test_case in TestCase.endpointdatasource:
         TestCase.currentcase = test_case
         yield test_case
@@ -72,40 +72,40 @@ def inccurrentcase():
 
 
 def start_capture_output():
-    '''
+    """
     deprecated: use the redirect context manager instead
     :return:
-    '''
-    '''
+    """
+    """
     Start capturing stdout output
     :return: True
-    '''
+    """
     TestCase.capturedOutput = io.StringIO()
     sys.stdout = TestCase.capturedOutput
     return True
 
 
 def stop_captured_output():
-    '''
+    """
     deprecated: use the redirect context manager instead
     :return:
-    '''
-    '''
+    """
+    """
     End capturing stdout output
     and return it
     :return: captured stdout output
-    '''
+    """
     sys.stdout = sys.__stdout__
     return TestCase.capturedOutput.getvalue()
 
 
 def load_cases():
-    '''
+    """
     Loads test cases from a pickled dictionary
     Set current test case to first test case
     TestCaseFile.pickle
     :return: True
-    '''
+    """
 
     TestCase.counter = 1
     TestCase.currentcase = 'TestCase' + str(TestCase.counter)
